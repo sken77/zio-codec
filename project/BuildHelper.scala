@@ -62,7 +62,7 @@ object BuildHelper {
         Seq("-Xexperimental") ++ stdOptsUpto212
     }
 
-  val zioVersion = "1.0.0-RC18-2"
+  val zioVersion = "1.0.0-RC18-2+147-6dcf6568-SNAPSHOT"
 
   def buildInfoSettings(packageName: String) =
     Seq(
@@ -76,6 +76,7 @@ object BuildHelper {
     crossScalaVersions := Seq(Scala212, Scala213),
     scalaVersion in ThisBuild := Scala212,
     scalacOptions := stdOptions ++ extraOptions(scalaVersion.value),
+    resolvers ++= Seq(Opts.resolver.sonatypeSnapshots),
     libraryDependencies ++=
       Seq(
         "com.github.ghik" % "silencer-lib" % SilencerVersion % Provided cross CrossVersion.full,
